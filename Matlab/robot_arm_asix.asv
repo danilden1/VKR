@@ -164,24 +164,19 @@ for idx = 1:numJoints - 1
     for wIdx = 1:numWaypoints
        xline(waypointTimes(wIdx),'k--'); 
     end
-    title(['Траектория ' num2str(idx) 'ого звена']); 
+    title(['Траектория ' num2str(idx) 'звена']); 
     xlabel('Время [с]');
     ylabel('Угол звена [рад]');
     legend('Дек. п-во ','Трепеции', 'Пол. 3й степени', 'Пол. 5й степени');
 end
 %%
-%%qdTask = diff(qTask);
-for idx = 1:numJoints - 1
-    qdTask(1,idx) = 0;
-end
-
-for idx = 2:numel(trajTimes) 
-    for j = 1:numJoints - 1
-        qdTask(j,idx) =  (qTask(j,idx) - qTask(j,idx - 1)) * 10;
-    end
-end
-
-for idx = 1:numJoints - 1
+% qdTask = qdJoint;
+% qdtask(1,1) = 0;
+% for idx = 1:numel(trajTimes) 
+%     
+% end
+% 
+for idx = 1:numJoints
     figure, hold on;
     plot(trajTimes,qdJoint(idx,:),'r--');
     plot(trajTimes,qdJointc(idx,:),'b:');
@@ -189,14 +184,14 @@ for idx = 1:numJoints - 1
     for wIdx = 1:numWaypoints
        xline(waypointTimes(wIdx),'k--'); 
     end
-    title(['Скорость ' num2str(idx) 'ого звена']); 
+    title(['Скорость ' num2str(idx) ' звена']); 
     xlabel('Время [с]');
     ylabel('Скорость звена [рад/с]');
     legend('Трепеции', 'Пол. 3й степени', 'Пол. 5й степени');
 end
 
 %%
-for idx = 1:numJoints - 1
+for idx = 1:numJoints
     figure, hold on;
     plot(trajTimes,qddJoint(idx,:),'r-');
     plot(trajTimes,qddJointc(idx,:),'b:');
@@ -204,10 +199,10 @@ for idx = 1:numJoints - 1
     for wIdx = 1:numWaypoints
        xline(waypointTimes(wIdx),'k--'); 
     end
-    title(['Ускорение ' num2str(idx) 'ого звена']); 
-    xlabel('Время [с]');
-    ylabel('Ускорение звена [рад/с2]');
-    legend('Трепеции', 'Пол. 3й степени', 'Пол. 5й степени');
+    title(['Ускорение ' num2str(idx) ' звена']); 
+    xlabel('Время [s]');
+    ylabel('Ускорение  [rad/ss]');
+    legend('Joint Space Speed', 'Cubic', 'Quantic');
 end
 
 

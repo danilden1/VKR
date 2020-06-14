@@ -1,3 +1,5 @@
+clear, clc, close all
+
 robot = robotics.RigidBodyTree('DataFormat','row','MaxNumBodies',5);
 
 L1= 0.2;
@@ -73,7 +75,7 @@ jointAnglesH = [0,-0.785398163397448,1.57079632679490,-0.785398163397448,0,0];
 showdetails(robot)
 %getTransform(robot,config,'tool','base')
 config = homeConfiguration(robot);
-show(robot);
+show(robot)
 
 %%
 

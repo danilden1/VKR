@@ -15,7 +15,6 @@ ikInitGuess = gen3.homeConfiguration;
 
 % Maximum number of waypoints (for Simulink)
 maxWaypoints = 20;
-%%
 
 % Positions (X Y Z)
 waypoints = toolPositionHome' + ... 

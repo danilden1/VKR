@@ -3,7 +3,6 @@
 %
 % Copyright 2019 The MathWorks, Inc.
 %% Setup
-clear, clc, close all
 % Define waypoint information
 createWaypointData;
 % Define IK
@@ -21,7 +20,7 @@ end
 plot3(waypoints(1,:),waypoints(2,:),waypoints(3,:),'ro','LineWidth',2);
 %% Generate trajectory
 % Cartesian Motion only
-trajType = 'trap';
+trajType = 'cubic';
 switch trajType
     case 'trap'
         [q,qd,qdd] = trapveltraj(waypoints,numel(trajTimes), ...
@@ -51,7 +50,7 @@ elseif plotMode == 2
     plotTransforms(q',repmat([1 0 0 0],[size(q,2) 1]),'FrameSize',0.05);
 end
 % To visualize the trajectory, run the following line
-% plotTrajectory(trajTimes,q,qd,qdd,'Names',["X","Y","Z"],'WaypointTimes',waypointTimes)
+ plotTrajectory(trajTimes,q,qd,qdd,'Names',["X","Y","Z"],'WaypointTimes',waypointTimes)
 %% Trajectory following loop
 for idx = 1:numel(trajTimes) 
     % Solve IK
